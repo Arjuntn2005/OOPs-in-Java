@@ -1,0 +1,47 @@
+import java.util.*;
+class Box{
+    public double Area(double base, double height) {
+        return (0.5 * base * height);
+    }
+    public int Area(int length, int breadth) {
+        return (length * breadth);
+    }
+    public double Area(double r) {
+        return (3.14 * r * r);
+    }
+    public double Area(double side1, double side2, double height) {
+        return (0.5 * (side1+side2) * height);
+    }
+}
+public class MethodOverloading {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        Box A = new Box();
+
+        System.out.print("Enter the Base and height of the Triangle: ");
+        double n1 = s.nextDouble();
+        double n2 = s.nextDouble();
+        // Triangle area
+        double tArea = A.Area(n1, n2);
+        System.out.print("Enter the length and breadth of the Rectangle: ");
+        int r1 = s.nextInt();
+        int r2 = s.nextInt();
+        // Rectangle area
+        int rArea = A.Area(r1, r2);
+        System.out.print("Enter the Radius of the Circle: ");
+        double r = s.nextDouble();
+        // Circle area
+        double cArea = A.Area(r);
+        System.out.print("Enter the lengths of Parallel sides, height  of the Trapezium(s1 s2 h): ");
+        double s1 = s.nextDouble();
+        double s2 = s.nextDouble();
+        double h = s.nextDouble();
+        // Trapezium area
+        double trapArea = A.Area(s1,s2,h);
+        System.out.println("Area of Triangle with base: "+ n1 + "and height: "+ n2+" is: "+tArea);
+        System.out.println("Area of Rectangle with length: "+ r1+" and breadth: "+ r2+" is: "+ rArea);
+        System.out.println("Area of Circle with radius: "+r+" is: "+ cArea);
+        System.out.println("Area of Trapezium is : "+trapArea);
+        s.close();
+    }
+}
