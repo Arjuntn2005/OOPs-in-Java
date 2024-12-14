@@ -1,0 +1,70 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Login implements ActionListener {
+    JLabel l, b, h;
+    JTextField l1, b1;
+    JButton a, m;
+
+    Login() {
+
+        JFrame f = new JFrame("Login");
+
+        l = new JLabel("Username ");
+        l.setBounds(50, 70, 70, 30);
+        b = new JLabel("Password");
+        b.setBounds(50, 120, 60, 30);
+        l1 = new JTextField();
+        l1.setBounds(120, 70, 80, 30);
+        b1 = new JTextField();
+        b1.setBounds(120, 120, 80, 30);
+        a = new JButton("Login");
+        a.setBounds(30, 170, 80, 20);
+        m = new JButton("Reset");
+        m.setBounds(120, 170, 80, 20);
+
+        h = new JLabel();
+        h.setBounds(50, 200, 200, 30);
+
+        f.add(l);
+        f.add(b);
+        f.add(l1);
+        f.add(b1);
+        f.add(a);
+        f.add(m);
+        f.add(h);
+
+        a.addActionListener(this);
+        m.addActionListener(this);
+
+        f.setLayout(null);
+        f.setSize(300, 300);
+
+        f.setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String s1 = l1.getText();
+        String s2 = b1.getText();
+        String s = e.getActionCommand();
+
+        if (s.equals("Login")) {
+            if (s1.equals("admin123") && s2.equals("arjun")) {
+                h.setText("LOGIN SUCCESSFUL");
+                h.setForeground(Color.GREEN);
+            } else {
+                h.setText("Invalid user");
+                h.setForeground(Color.RED);
+            }
+        } else if (s.equals("Reset")) {
+            l1.setText("");
+            b1.setText("");
+            h.setText("");
+        }
+    }
+
+    public static void main(String args[]) {
+        new Login();
+    }
+}
