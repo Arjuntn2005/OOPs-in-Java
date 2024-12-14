@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+abstract class Shape {
+	abstract void numberOfSides();
+}
+
+class Rectangle extends Shape {
+	int sides;
+
+	Rectangle(int sides) {
+		this.sides = sides;
+	}
+
+	void numberOfSides() {
+		System.out.println("shape with " + sides + " sides :");
+		System.out.println("I am Rectangle.I have " + sides + " sides :");
+		System.out.println("sum of angle=" + (sides - 2) * 180);
+	}
+}
+
+class Triangle extends Shape {
+	int sides;
+
+	Triangle(int sides) {
+		this.sides = sides;
+	}
+
+	void numberOfSides() {
+		System.out.println("shape with " + sides + " sides :");
+		System.out.println("I am triangle.I have " + sides + " sides :");
+		System.out.println("sum of angle=" + (sides - 2) * 180);
+	}
+}
+
+class Hexagon extends Shape {
+	int sides;
+
+	Hexagon(int sides) {
+		this.sides = sides;
+	}
+
+	void numberOfSides() {
+		System.out.println("shape with " + sides + " sides :");
+		System.out.println("I am Hexagon.I have " + sides + " sides :");
+		System.out.println("sum of angle=" + (sides - 2) * 180);
+	}
+}
+
+public class Abstract {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		String c;
+		do {
+			System.out.print("Enter the sides of geometric shape:");
+			int sides = s.nextInt();
+			if (sides == 3) {
+				Triangle t = new Triangle(sides);
+				t.numberOfSides();
+			} else if (sides == 4) {
+				Rectangle r = new Rectangle(sides);
+				r.numberOfSides();
+			} else if (sides == 6) {
+				Hexagon h = new Hexagon(sides);
+				h.numberOfSides();
+			} else {
+				System.out.println("Shape with " + sides
+						+ " sides is not supported.");
+			}
+			s.nextLine();
+			System.out.println("Do you want to continue ?(yes/no):");
+			c = s.nextLine();
+		} while (c.equalsIgnoreCase("yes"));
+		System.out.println("exiting program.Goodbye!");
+	}
+}
