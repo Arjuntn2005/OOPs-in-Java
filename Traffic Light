@@ -1,0 +1,75 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class TrafficLight extends JFrame implements ActionListener {
+
+    JRadioButton r1, r2, r3;
+    Color red_Color, green_Color, yellow_Color;
+
+    TrafficLight() {
+        r1 = new JRadioButton("Red");
+        r1.setBounds(100, 50, 100, 50);
+        r2 = new JRadioButton("Green");
+        r2.setBounds(200, 50, 100, 50);
+        r3 = new JRadioButton("Yellow");
+        r3.setBounds(300, 50, 100, 50);
+
+        ButtonGroup g = new ButtonGroup();
+        g.add(r1);
+        g.add(r2);
+        g.add(r3);
+        add(r1);
+        add(r2);
+        add(r3);
+
+        red_Color = getBackground();
+        green_Color = getBackground();
+        yellow_Color = getBackground();
+
+        setSize(400, 400);
+        setLayout(null);
+        setResizable(false);
+
+        r1.addActionListener(this);
+        r2.addActionListener(this);
+        r3.addActionListener(this);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (r1.isSelected()) {
+            red_Color = Color.RED;
+            green_Color = getBackground();
+            yellow_Color = getBackground();
+        } else if (r2.isSelected()) {
+            red_Color = getBackground();
+            green_Color = Color.GREEN;
+            yellow_Color = getBackground();
+        } else if (r3.isSelected()) {
+            red_Color = getBackground();
+            green_Color = getBackground();
+            yellow_Color = Color.YELLOW;
+        }
+        repaint();
+    }
+
+    public void paint(Graphics g) {
+        super.paint(g);
+
+        g.setColor(Color.BLACK); // Set outline color
+        g.drawOval(150, 150, 50, 50);
+        g.drawOval(150, 220, 50, 50);
+        g.drawOval(150, 270, 50, 50);
+
+        g.setColor(red_Color);
+        g.fillOval(150, 150, 50, 50);
+        g.setColor(green_Color);
+        g.fillOval(150, 220, 50, 50);
+        g.setColor(yellow_Color);
+        g.fillOval(150, 270, 50, 50);
+    }
+
+    public static void main(String[] args) {
+        new TrafficLight().setVisible(true);
+    }
+}
